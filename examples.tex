@@ -58,17 +58,9 @@ In this scenario we have $n$ UAVs, $m$ altitude layers and $q$ locations of
 interest. A UAV can ascend or descend to the altitude layer above or
 below its current altitude layer. A location is a predefined
 point on an altitude layer. Our aim is to automatically synthesize a
-control protocol that guarantees the following:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  Each UAV is able to visit, infinitely often, all of the locations of
-  interest.
-\item
-  No Collision between UAVs.
-\end{enumerate}
+control protocol that guarantees that 1) each UAV is able to visit, infinitely
+often, all of the locations of interest and 2) there must be no collision 
+between UAVs.
 
 \subsubsection{Approach}\label{approach}
 \begin{figure}[htp]
@@ -97,13 +89,28 @@ within its operating region. With this assumption, we can guarantee that
 no collision will happen if the UAV with intersected operating region
 remain still until the intersection is resolved.
 
-
-At each turn, each UAV will signal an intention to visit a specific location or to remain still. We assume that there cannot be two UAVs intending to go to the same location to prevent deadlocks. We use this intention signal to update the operating regions for all the UAVs so that the intended locations are inside the operating regions of the UAVs. The algorithm for updating the operating regions ensures that the updated regions for all the UAVs do not intersect. Currently, there is no guarantee that the algorithm will terminate. The algorithm includes reshaping the operating regions and moving the UAVs to nearby location to resolve operating regions intersections. The UAV will then be given the command to go to location it intended to go to. It is assumed that the UAV will reach the location in one time step. 
+At each turn, each UAV will signal an intention to visit a specific location 
+or to remain still. We assume that there cannot be two UAVs intending to fly 
+to the same location to prevent deadlocks. We use this intention signal to update 
+the operating regions for all the UAVs so that the intended locations are inside 
+the operating regions of the UAVs. The algorithm for updating the operating regions 
+ensures that the updated regions for all the UAVs do not intersect. Currently, there 
+is no guarantee that the algorithm will terminate. The algorithm includes reshaping 
+the operating regions and moving the UAVs to nearby location to resolve operating 
+regions intersections. The UAV will then be given the command to fly to location it 
+intended to fly to. It is assumed that the UAV will reach the location in one time step. 
 
 \subsubsection{Problem setup}\label{problem-setup}
+We model this problem by assigning three output variables, $l_{i} \in L$ 
+for the layer that UAV$_{i}$ should ascend or descend to, where $L$ is the 
+set of indices of the altitude layers, $t_{i} \in P$ for signaling UAV$_{i}$'s 
+intended location to fly to, where $P$ is the set of indices of locations and 
+$p_{i},t_{i} \in P$ for the location that UAV$_{i}$ should fly to. In addition, 
+we assign $(n-1)$ input variables $c_{ij} \in B$ where B is the boolean set and 
+$c_{ij} = c_{ji}$ to each UAV$_{i}$ where $i,j \in U$, which is the set of indices 
+for the UAVs.
 
-We model this problem by assigning three output variables $l_{i} \in L$ where $L$ is the set of indices of the altitude layers, $p_{i},t_{i} \in P$ where $P$ is the set of indices of locations, and $(n-1)$ input variables $c_{ij}  \in B$ where B is the boolean set and $c_{ij} = c_{ji}$ to each UAV$_{i}$ where $i,j \in U$, the set of indices for the UAVs. The variables are defined as follows: 
-
+\iffalse
 \begin{itemize}
 \item
   \textbf{$l_{i}$:} the altitude layer for UAV$_{i}$ to ascend or descend to.
@@ -115,8 +122,7 @@ We model this problem by assigning three output variables $l_{i} \in L$ where $L
   \textbf{$c_{ij}$:} true if the operating region for
   UAV$_{i}$ intersects with that of UAV$_{j}$ and false otherwise.
 \end{itemize}
-
-At each time instance, the synthesized controller takes the variables $c_{ij}$ as inputs and outputs $l_{i}$, $g_{i}$, $t_{i}$ for each UAV\@.
+\fi
 
 \subsubsection{System specifications}\label{system-specifications}
 
@@ -197,3 +203,7 @@ The system specifications for synthesizing the controller consist of four sets o
 We make three sets assumptions on the environment. First, the location is considered inspected when an escort visits the location, $\square (s_{i} \implies r_{i})$. Second, an inspected location remains inspected. It is also possible to set an expiration timer for the location to switch back not inspected: $\square (r_{i} \implies \Circle r_{i})$. The last assumption is that all UAVs will reach their destinations they were commanded to fly to by the next time step: $\square (g_{i} \implies \Circle s_{i})$.
 
 \end{document}
+
+
+
+
