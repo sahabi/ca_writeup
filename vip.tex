@@ -1,0 +1,36 @@
+\subsection{VIP Escort}\label{vip-escort}
+
+\subsubsection{Problem statement}\label{problem-statement}
+
+In this scenario we have one main UAV we call ``VIP'', multiple
+``escort'' UAVs, multiple pre-defined locations of interest. Our aim is
+to automatically synthesize a control protocol that guarantees the
+following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  The VIP must not move from one location to another without being
+  escorted by one of the escorts.
+\item
+  The VIP cannot visit certain locations until at least one of the
+  escorts have inspected the location within the last $x$ steps.
+\item
+  All the UAVs must go through a certain route to the location of
+  interest. This is needed to prevent going through unsafe zones.
+\end{enumerate}
+
+\subsubsection{Problem Setup}\label{problem-setup}
+
+We model this problem by assigning two output variables $g_{i}$ and
+$t_{i}$ and one input variables $s_{i}$ to each escort $UAV_{i}$. The
+variables are defined as follows:
+
+\subsubsection{System specifications}\label{system-specifications}
+
+\subsubsection{Environment assumptions}\label{environment-assumptions}
+
+\subsubsection{Demo}\label{demo}
+
+{[}Here I will show a set of figures and describe what's going on{]}

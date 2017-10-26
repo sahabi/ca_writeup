@@ -1,0 +1,13 @@
+<h1 id="synthesis-collision-avoidance-protocol">Synthesis Collision Avoidance Protocol</h1>
+<h2 id="problem-statement">Problem statement</h2>
+<p>In this scenario we have multiple UAVs, altitude layers and locations of interest. a UAV can ascend or descend to the altitude layer above or below its current altitude layer. A location of interest is a predefined location on an altitude layer. Our aim is to automatically synthesize a control protocol that guarantees the following:</p>
+<ol style="list-style-type: decimal">
+<li>Each UAV is able to visit -infinitely often- any of the locations of interest.</li>
+<li>A UAV must not collide with any other UAV.</li>
+</ol>
+<h2 id="approach">Approach</h2>
+<p>Our approach to this problem is centered around the idea of UAVs' operating regions. An operating region for a UAV is a polygon on the UAV's current altitude layer. We assume That the UAV will only fly within its operating region. With this assumption, we can guarantee that if there is no two or more intersecting UAVs' operating regions, then no collision will occur.</p>
+<h2 id="problem-setup">Problem Setup</h2>
+<p>Let <span class="math"><em>C</em></span>, <span class="math"><em>L</em></span>, <span class="math"><em>G</em></span>, and <span class="math"><em>N</em></span> denote the sets of operating region intersection flags, UAVs' altitude layers, the UAVs' go-to location commands, and the UAVs' intentions.</p>
+<p>At each time instance, the control protocol determines each UAV's altitude <span class="math"><em>l</em><sub><em>i</em></sub> ∈ <em>L</em></span>, the next location of interest for each UAV <span class="math"><em>g</em><sub><em>i</em></sub> ∈ <em>G</em></span>, and the altitude layer for each UAV <span class="math"><em>l</em><sub><em>i</em></sub> ∈ <em>L</em></span> where <span class="math"><em>i</em></span> is the index of the UAV. The inputs to the controller are boolean variables <span class="math"><em>n</em><sub><em>i</em><em>j</em></sub> ∈ <em>N</em></span>. The variable <span class="math"><em>n</em><sub><em>i</em><em>j</em></sub></span> is true when the operating region of UAV <span class="math"><em>i</em></span> intersects with the operating region of UAV <span class="math"><em>j</em></span> and false otherwise.</p>
+<h2 id="system-specifications">System specifications</h2>
