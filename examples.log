@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.9.7)  26 OCT 2017 17:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.9.7)  31 OCT 2017 13:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1096,59 +1096,64 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-<figs/ca_1.png, id=55, 1395.2125pt x 691.58376pt>
+<figs/ca_1.png, id=55, 566.115pt x 282.05376pt>
 File: figs/ca_1.png Graphic file (type png)
  <use figs/ca_1.png>
-Package pdftex.def Info: figs/ca_1.png used on input line 68.
-(pdftex.def)             Requested size: 289.07999pt x 143.28462pt.
- [1
+Package pdftex.def Info: figs/ca_1.png used on input line 110.
+(pdftex.def)             Requested size: 361.34999pt x 180.04036pt.
 
-{/home/sahabi/.texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/ca_1.png>]
+Overfull \hbox (16.34998pt too wide) in paragraph at lines 113--118
+[][]
+ []
 
-[2] <figs/vip.png, id=78, 490.83376pt x 422.57875pt>
+[1
+
+{/home/sahabi/.texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <./figs/ca_1.p
+ng>] <figs/vip.png, id=80, 490.83376pt x 422.57875pt>
 File: figs/vip.png Graphic file (type png)
  <use figs/vip.png>
-Package pdftex.def Info: figs/vip.png used on input line 157.
+Package pdftex.def Info: figs/vip.png used on input line 160.
 (pdftex.def)             Requested size: 196.33002pt x 169.0285pt.
 
 [3 <./figs/vip.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 172.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 197.
  [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 172.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
  (./examples.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 172.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 172.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 197.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 197.
 Package rerunfilecheck Info: File `examples.out' has not changed.
 (rerunfilecheck)             Checksum: FF446E9B2F039C51E4E116CE0B2D6C9E;1877.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 172.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 197.
  ) 
 Here is how much of TeX's memory you used:
- 19868 strings out of 494985
- 331529 string characters out of 6180357
- 408021 words of memory out of 5000000
- 22671 multiletter control sequences out of 15000+600000
- 36894 words of font info for 64 fonts, out of 8000000 for 9000
+ 19858 strings out of 494985
+ 331161 string characters out of 6180357
+ 409173 words of memory out of 5000000
+ 22649 multiletter control sequences out of 15000+600000
+ 43282 words of font info for 71 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 56i,11n,55p,689b,686s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
-c/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/s
-hare/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/l
+ 56i,11n,55p,419b,669s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/u
+sr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/l
 m/lm-ec.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont
 /lcircle1.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/te
 xmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 ex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/symbols/msam10.pfb>
-Output written on examples.pdf (4 pages, 229141 bytes).
+onts/type1/public/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/
+share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on examples.pdf (4 pages, 250693 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
+ 143 PDF objects out of 1000 (max. 8388607)
+ 121 compressed objects within 2 object streams
  19 named destinations out of 1000 (max. 500000)
- 9335 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 10359 words of extra memory for PDF output out of 12000 (max. 10000000)
 
