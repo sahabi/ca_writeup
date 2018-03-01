@@ -137,28 +137,26 @@ We assume that if two UAVs have intersecting operating regions ($c_{ij}$ is true
 one of the UAVs signaled an intention to go to a location then the intersection 
 will be resolved ($c_{ij}$ is false).
 
-
 \subsection{Synthesis of VIP Escort Protocol}\label{vip-escort}
 
 \subsubsection{Problem statement}\label{problem-statement}
 
-In this scenario we have one main UAV we call ``VIP'', multiple ``escort'' UAVs, 
-and multiple pre-defined locations on the map. These locations are shown in 
-green in fig \ref{fig:vip}. Our aim is to automatically synthesize a control protocol that 
-guarantees the following three properties. First, The VIP must not fly from one 
-location to another without being followed by one of the escorts. Second, The VIP 
-cannot visit certain locations until at least one of the escorts have inspected the 
-location within the last $x$ steps. A location is considered inspected if an escort 
-flies over the location. In order for the UAVs not to pass through the prohibited 
-regions shown in red in fig \ref{fig:vip}, the UAVs must follow certain paths between the 
-locations in green. For example, to go from the bottom right location to the 
-upper right, the UAVs must pass through the middle location so that they do not fly 
-over the prohibited regions.
+In this scenario we have one main UAV we call ``VIP'', multiple support UAVs we
+call ``escorts'', one adversary UAV we call ``enemy'', and multiple pre-defined 
+locations on the map. These locations are shown in green in fig \ref{fig:vip}. 
+Our aim is to automatically synthesize 
+a control protocol that guarantees the following four properties. First, The 
+VIP can only fly from one location to another if it is being followed by one of the escorts. Second, The VIP cannot visit certain locations until at least one 
+of the escorts have previously inspected by flying over the location. In order 
+for the UAVs not to pass through the prohibited regions shown in red in fig
+\ref{fig:vip}, the UAVs must follow certain paths between the locations in green.
+For example, to go from the bottom right location to the upper right, the UAVs
+must pass through the location in the center in order to not fly over the prohibited regions.
 
 \begin{figure}[htp]
     \centering
-\includegraphics[scale=.4]{figs/vip.png}
-    \caption{The escort UAV (purple) is tracking the VIP (blue), allowing the VIP
+\includegraphics[scale=.4]{figs/vip_escort.pdf}
+    \caption{The escort UAV (blue) is tracking the VIP (yellow), allowing the VIP
 to fly from the bottom right location to the top right via the middle location.}
     \label{fig:vip}
 \end{figure}
@@ -166,33 +164,32 @@ to fly from the bottom right location to the top right via the middle location.}
 
 \subsubsection{Problem setup}\label{problem-setup}
 
-We model this problem by assigning two output variables and one input variable
-for the escort UAVs. $g_{i} \in P$ is an output variable that indicates the location that UAV$_{i}$ 
-should fly to where $P$ is the set of location indices and $t_{i}\in B$, the second output 
-variable, is an indicator for whether the escort UAV$_{i}$ should track the VIP or not, 
-where $B$ is the boolean set and one input variable $s_{i} \in P$ for the current location 
-of UAV$_{i}$ where $i \in U$, the set of escort UAV indices. As for the VIP, we assign 
-one input variable $p \in P$ for the VIP's current location and one output variable 
-$q \in P$ for the location that the VIP should fly to. In addition, we assign the
-input variables $r_{i} \in B$ that indicate if the location was previously 
-inspected.
+We model this problem by assigning two output variables for each escort UAV. $g_{i} \in
+P$ is an output variable that indicates the location that UAV$_{i}$ should fly to where
+$P$ is the set of location indices and $t_{i}\in B$, the second output variable, is an
+indicator for whether the escort UAV$_{i}$ should track the VIP or not, where $B$ is the
+boolean set. As for the VIP, we assign one output variable $v \in P$ for the location
+that the VIP should fly to. We also assign one input variable to model the current
+location of the enemy $o \in P$. In addition, we assign the input variables $r_{i} \in
+B$ that indicate if the location was previously inspected.
 
 \subsubsection{System specifications}\label{system-specifications}
-The system specifications for synthesizing the controller consist of four 
+The system specifications for synthesizing the controller consist of five 
 sets of LTL specifications. First, the escort must be at the same location as the 
-VIP to be able to begin tracking it $\square (t_{i} \implies p = s_{i})$. Secondly, The VIP 
-cannot fly from a location to another without being followed by another UAV 
-$\square(\bigwedge\limits_{i\in U}\lnot ti_{i} \implies \Circle p = p$). The third specification is that the VIP must always 
-eventually visits a set of locations: $\bigwedge\limits_{p\in P}\square \lozenge q$. Lastly, a set of locations must 
-always eventually be inspected $\bigwedge\limits_{i\in P}\square \lozenge r_{i}$.
-
+VIP to be able to begin tracking it $\square (\Circle t_{i} \implies v = g_{i})$.
+Secondly, The VIP cannot fly from a location to another without being followed by
+another UAV $\square(\Circle v \neq v \implies \bigvee\limits_{i\in U}t_{i}$). 
+The third specification is that the VIP must always eventually visits a set of
+locations: $\bigwedge\limits_{p\in P}\square \lozenge v=p$. the fourth is that a set of
+locations must always eventually be inspected $\bigwedge\limits_{i\in P}\square \lozenge
+r_{i}$. Lastly, the VIP must not go to a location where the enemy is currently located
+$\square (v \neq o)$
 \subsubsection{Environment assumptions}\label{environment-assumptions}
 We express the environment's assumptions in three sets of LTL specifications. 
-First, the location is considered inspected when an escort visits the location $\square (s_{i} \implies r_{i})$. Second, 
-an inspected location remains inspected $\square (r_{i} \implies \Circle r_{i})$. It is also possible 
-to set an expiration timer for the location to switch back not inspected. The 
-last assumption is that all UAVs will reach their destinations that they were 
-commanded to fly to by the next time step: $\square (g_{i} \implies \Circle s_{i})$.
+First, the location is considered inspected when an escort visits the location $\square
+(g_{i} \implies r_{i})$. Second, an inspected location remains inspected $\square (r_{i}
+\implies \Circle r_{i})$ (it is also possible to set an expiration timer for the
+location to switch back to not inspected). The last assumption is modeling our assumptions about the enemy UAV; there are several way to model this, one simple way is to specify the locations that the enemy UAV does not go to: $\bigwedge\limits_{d\in D} \square (o \neq d)$ where $D \subset P$ is the set of locations that the enemy does not go to.
 
 \end{document}
 
